@@ -1,0 +1,17 @@
+[package]
+name = "Bondingcurvecontractsfortokendistribution"
+version = "1.0.0"
+authors = []
+
+[addresses]
+MyModule = "0xb4bffda9901b434b0bb7e4924ce578e7d84b751b28859116f9f38efc065d5ccc"
+
+
+[dev-addresses]
+
+[dependencies.AptosFramework]
+git = "https://github.com/aptos-labs/aptos-framework.git"
+rev = "mainnet"
+subdir = "aptos-framework"
+
+[dev-dependencies]

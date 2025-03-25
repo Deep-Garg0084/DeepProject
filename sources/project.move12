@@ -1,0 +1,30 @@
+module MyModule::BondingCurve {
+
+    use aptos_framework::signer;
+    use aptos_framework::coin;
+    use aptos_framework::aptos_coin::AptosCoin;
+
+    struct BondingCurve has store, key {
+        total_supply: u64,
+        base_price: u64,
+    }
+
+    public fun initialize(owner: &signer, base_price: u64) {
+        let curve = BondingCurve {
+            total_supply: 0,
+            base_price,
+        };
+        move_to(owner, curve);
+    }
+
+    public fun buy_tokens(buyer: &signer, seller: address, amount: u64) acquires BondingCurve {
+        let curve = borrow_global_mut<BondingCurve>(seller);
+        let price = curve.base_price + curve.total_supply; 
+        let cost = price * amount;
+        
+        let payment = coin::withdraw<AptosCoin>(buyer, cost);
+        coin::deposit<AptosCoin>(seller, payment);
+        
+        curve.total_supply = curve.total_supply + amount;
+    }
+}
