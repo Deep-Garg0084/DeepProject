@@ -42,3 +42,5 @@ MyModule::BondingCurve::buy_tokens(&buyer, seller_address, 5);
 ## License
 This project is licensed under the MIT License.
 
+## Contrat Address
+0xc7347f50979fdd3815a4dc0ee6fe4f201f701d2ca531ae0a5ddf04b10fe73cc1
